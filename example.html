@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NIST CSF Subcategory: ID.AM-2</title>
+  <style>
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    textarea {
+      width: 100%;
+      height: 150px;
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      resize: vertical;
+    }
+    select, button {
+      padding: 8px 12px;
+      font-size: 14px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>NIST CSF Subcategory: ID.AM-2</h2>
+    <p><strong>Subcategory:</strong> Software is inventoried, prioritized, and assessed using a risk-based approach</p>
+    <p><strong>Explanation:</strong> Software inventories are managed throughout the software life cycle. Software is prioritized and assessed using a risk-based approach considering operational requirements, cyber supply chain risk, and the ability to effectively patch or upgrade software.</p>
+    <p><strong>Example:</strong> 
+    </ br>
+   <ul>
+	<li>An organization maintains a centralized software inventory system that tracks all software assets, including their versions, vendors, and patch levels.</li>
+	<li>The inventory is regularly updated, and software assets are prioritized based on risk assessments that consider factors like criticality, vulnerabilities, and supply chain risks.</li>
+	<li>Risk management strategies are developed and implemented for high-priority software assets, such as implementing strict patching and upgrade schedules or exploring alternative solutions.</li>
+   </ul></p>
+    <label for="maturity">Maturity Level:</label>
+    <select id="maturity">
+      <option value="1">1 - Partial</option>
+      <option value="2">2 - Risk Informed</option>
+      <option value="3">3 - Repeatable</option>
+      <option value="4">4 - Adaptive</option>
+    </select>
+    <br><br>
+    <label for="details">Details of how control is met:</label>
+    <textarea id="details" placeholder="Enter details here..."></textarea>
+    <br><br>
+    <button>UPDATE</button>
+    <button>CANCEL</button>
+  </div>
+</body>
+</html>
