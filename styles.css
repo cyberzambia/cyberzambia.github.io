@@ -1,4 +1,20 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+/* Roboto Font Styles */
+.roboto {
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+}
+
+.roboto-italic {
+    font-family: "Roboto", sans-serif;
+    font-style: italic;
+}
+
+.thin { font-weight: 100; }
+.light { font-weight: 300; }
+.regular { font-weight: 400; }
+.medium { font-weight: 500; }
+.bold { font-weight: 700; }
+.black { font-weight: 900; }
 
 /* Global Styles */
 body {
