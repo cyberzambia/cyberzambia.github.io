@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIST CSF Identify Function</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+
+<body>
+    <header>
+        <img src="logo.png" alt="Company Logo" class="logo">
+        <h1>NIST CSF Identify Function</h1>
+    </header>
+    
+    <p>The Identify function of the NIST Cybersecurity Framework is foundational for effective cybersecurity risk management. It helps organizations develop an organizational understanding to manage cybersecurity risk to systems, people, assets, data, and capabilities.</p>
+
+    <div class="category">
+        <h2>Asset Management <span class="compliance-score" data-score="45.0" data-fraction="9/20"></span></h2>
+        <ul>
+            <li>ID.AM-1: Physical devices and systems inventory</li>
+            <li>ID.AM-2: Software platforms and applications inventory</li>
+            <li>ID.AM-3: Organizational communication and data flows mapping</li>
+            <li>ID.AM-4: External information systems cataloging</li>
+            <li>ID.AM-5: Resources prioritization</li>
+            <li>ID.AM-6: Cybersecurity roles and responsibilities</li>
+        </ul>
+    </div>
+
+    <div class="category">
+        <h2>Business Environment <span class="compliance-score" data-score="75.0" data-fraction="3/4"></span></h2>
+        <ul>
+            <li>ID.BE-1: Organization's role in the supply chain</li>
+            <li>ID.BE-2: Organization's place in critical infrastructure and industry sector</li>
+            <li>ID.BE-3: Mission, objectives, and activities prioritization</li>
+            <li>ID.BE-4: Dependencies and critical functions for delivery of critical services</li>
+            <li>ID.BE-5: Resilience requirements for critical services</li>
+        </ul>
+    </div>
+
+    <div class="category">
+        <h2>Governance <span class="compliance-score" data-score="92.0" data-fraction="23/25"></span></h2>
+        <ul>
+            <li>ID.GV-1: Organizational cybersecurity policy</li>
+            <li>ID.GV-2: Cybersecurity roles and responsibilities coordination</li>
+            <li>ID.GV-3: Legal and regulatory requirements understanding</li>
+            <li>ID.GV-4: Governance and risk management processes addressing cybersecurity risks</li>
+        </ul>
+    </div>
+
+    <div class="category">
+        <h2>Risk Assessment <span class="compliance-score" data-score="82.5" data-fraction="33/40"></span></h2>
+        <ul>
+            <li>ID.RA-1: Asset vulnerabilities identification</li>
+            <li>ID.RA-2: Cyber threat intelligence from information sharing forums</li>
+            <li>ID.RA-3: Threats, both internal and external, identification</li>
+            <li>ID.RA-4: Potential business impacts and likelihoods identification</li>
+            <li>ID.RA-5: Threats, vulnerabilities, likelihoods, and impacts use to determine risk</li>
+            <li>ID.RA-6: Risk responses identification</li>
+        </ul>
+    </div>
+
+    <div class="category">
+        <h2>Risk Management Strategy <span class="compliance-score" data-score="98.0" data-fraction="49/50"></span></h2>
+        <ul>
+            <li>ID.RM-1: Risk management processes establishment, management, and agreement</li>
+            <li>ID.RM-2: Organizational risk tolerance determination</li>
+            <li>ID.RM-3: Organization's determination of risk tolerance informed by its role in critical infrastructure and sector-specific risk analysis</li>
+        </ul>
+    </div>
+
+    <script>
+        document.querySelectorAll('.compliance-score').forEach(score => {
+            const value = parseFloat(score.dataset.score);
+            const fraction = score.dataset.fraction;
+            
+            score.innerHTML = `<div class="score-percentage">${value.toFixed(1)}%</div><div class="score-fraction">${fraction}</div>`;
+            
+            if (value < 60.0) {
+                score.style.backgroundColor = '#e74c3c'; // Red
+            } else if (value < 85.0) {
+                score.style.backgroundColor = '#f39c12'; // Amber
+            } else if (value < 95.0) {
+                score.style.backgroundColor = '#2ecc71'; // Green
+            } else {
+                score.style.backgroundColor = '#27ae60'; // Dark Green
+            }
+        });
+    </script>
+</body>
+</html>

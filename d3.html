@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIST CSF v2 IDENTIFY Sunburst Diagram</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .tooltip {
+            position: absolute;
+            background-color: white;
+            padding: 5px;
+            border: 1px solid #ddd;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>NIST CSF v2 IDENTIFY Function Sunburst Diagram</h1>
+    <div id="sunburst-container"></div>
+
+    <script>
+        // Your D3.js code goes here
+        // Make sure to replace 'd3.select("body").append("svg")' with 'd3.select("#sunburst-container").append("svg")'
+
+// D3.js code for NIST CSF v2 IDENTIFY function Sunburst diagram with status color coding
+
+
+// D3.js code for NIST CSF v2 IDENTIFY function Sunburst diagram
+
+// Data structure for NIST CSF v2 IDENTIFY function
+const data = {
+  name: "IDENTIFY",
+  children: [
+    {
+      name: "ID.AM",
+      children: [
+        {name: "ID.AM-1", status: "green"},
+        {name: "ID.AM-2", status: "amber"},
+        {name: "ID.AM-3", status: "red"},
+        {name: "ID.AM-4", status: "green"},
+        {name: "ID.AM-5", status: "amber"},
+        {name: "ID.AM-6", status: "green"}
+      ]
+    },
+    {
+      name: "ID.BE",
+      children: [
+        {name: "ID.BE-1", status: "green"},
+        {name: "ID.BE-2", status: "green"},
+        {name: "ID.BE-3", status: "amber"},
+        {name: "ID.BE-4", status: "red"},
+        {name: "ID.BE-5", status: "amber"}
+      ]
+    },
+    {
+      name: "ID.GV",
+      children: [
+        {name: "ID.GV-1", status: "green"},
+        {name: "ID.GV-2", status: "amber"},
+        {name: "ID.GV-3", status: "green"},
+        {name: "ID.GV-4", status: "green"}
+      ]
+    },
+    {
+      name: "ID.RA",
+      children: [
+        {name: "ID.RA-1", status: "amber"},
+        {name: "ID.RA-2", status: "red"},
+        {name: "ID.RA-3", status: "amber"},
+        {name: "ID.RA-4", status: "green"},
+        {name: "ID.RA-5", status: "green"},
+        {name: "ID.RA-6", status: "amber"}
+      ]
+    },
+    {
+      name: "ID.RM",
+      children: [
+        {name: "ID.RM-1", status: "green"},
+        {name: "ID.RM-2", status: "amber"},
+        {name: "ID.RM-3", status: "green"}
+      ]
+    },
+    {
+      name: "ID.SC",
+      children: [
+        {name: "ID.SC-1", status: "green"},
+        {name: "ID.SC-2", status: "amber"},
+        {name: "ID.SC-3", status: "red"},
+        {name: "ID.SC-4", status: "green"},
+        {name: "ID.SC-5", status: "amber"}
+      ]
+    }
+  ]
+};
+
+// Set up dimensions
+const width = 600;
+const height = 600;
+const radius = Math.min(width, height) / 2;
+
+// Create SVG
+const svg = d3.select("#sunburst-container").append("svg")
+  .attr("width", width)
+  .attr("height", height)
+  .append("g")
+  .attr("transform", `translate(${width / 2},${height / 2})`);
+
+// Create color function based on status
+const colorByStatus = (d) => {
+  if (!d.data.status) return "#999"; // Default color for parent nodes
+  switch (d.data.status) {
+    case "green": return "#4CAF50";
+    case "amber": return "#FFC107";
+    case "red": return "#F44336";
+    default: return "#999";
+  }
+};
+
+// Create partition layout
+const partition = d3.partition()
+  .size([2 * Math.PI, radius * radius])
+  .padding(1)
+  .round(true);
+
+// Create arc generator
+const arc = d3.arc()
+  .startAngle(d => d.x0)
+  .endAngle(d => d.x1)
+  .innerRadius(d => Math.sqrt(d.y0))
+  .outerRadius(d => Math.sqrt(d.y1));
+
+// Create hierarchy and partition it
+const root = d3.hierarchy(data)
+  .sum(d => d.children ? 0 : 1)
+  .sort((a, b) => b.value - a.value);
+
+// Compute the maximum number of subcategories
+const maxSubcategories = d3.max(root.children, d => d.children.length);
+
+// Adjust the y1 value for tier 2 elements based on their number of subcategories
+root.children.forEach(category => {
+  const subcategoryCount = category.children.length;
+  const heightFactor = 0.5 + (0.5 * subcategoryCount / maxSubcategories);
+  category.y1 = category.y0 + (root.y1 - root.y0) * heightFactor;
+});
+
+partition(root);
+
+// Create paths
+svg.selectAll("path")
+  .data(root.descendants())
+  .enter().append("path")
+  .attr("d", arc)
+  .style("fill", d => colorByStatus(d))
+  .style("stroke", "white")
+  .style("stroke-width", "0.5px")
+  .on("mouseover", function(event, d) {
+    d3.select(this).style("opacity", 0.8);
+    // Add tooltip
+    d3.select("body").append("div")
+      .attr("class", "tooltip")
+      .style("position", "absolute")
+      .style("background-color", "white")
+      .style("padding", "5px")
+      .style("border", "1px solid #ddd")
+      .style("left", (event.pageX + 10) + "px")
+      .style("top", (event.pageY - 10) + "px")
+      .html(`${d.data.name}<br>Status: ${d.data.status || 'N/A'}<br>Subcategories: ${d.children ? d.children.length : 'N/A'}`);
+  })
+  .on("mouseout", function() {
+    d3.select(this).style("opacity", 1);
+    d3.select(".tooltip").remove();
+  });
+
+// Add labels
+svg.selectAll("text")
+  .data(root.descendants().filter(d => d.depth && (d.y0 + d.y1) / 2 * (d.x1 - d.x0) > 10))
+  .enter().append("text")
+  .attr("transform", function(d) {
+    const x = (d.x0 + d.x1) / 2 * 180 / Math.PI;
+    const y = Math.sqrt((d.y0 + d.y1) / 2);
+    return `rotate(${x - 90}) translate(${y},0) rotate(${x < 180 ? 0 : 180})`;
+  })
+  .attr("dy", "0.35em")
+  .text(d => d.data.name)
+  .attr("text-anchor", "middle")
+  .attr("font-size", "8px")
+  .attr("fill", "white");
+
+// Add a legend
+const legend = svg.append("g")
+  .attr("transform", `translate(${radius + 10},-${radius - 10})`);
+
+const legendData = [
+  {color: "#4CAF50", label: "Green (Good)"},
+  {color: "#FFC107", label: "Amber (Warning)"},
+  {color: "#F44336", label: "Red (Critical)"},
+  {color: "#999", label: "Parent Node"}
+];
+
+legend.selectAll("rect")
+  .data(legendData)
+  .enter().append("rect")
+  .attr("y", (d, i) => i * 20)
+  .attr("width", 15)
+  .attr("height", 15)
+  .attr("fill", d => d.color);
+
+legend.selectAll("text")
+  .data(legendData)
+  .enter().append("text")
+  .attr("x", 25)
+  .attr("y", (d, i) => i * 20 + 12)
+  .text(d => d.label)
+  .attr("font-size", "10px")
+  .attr("fill", "black");
+
+
+
+    </script>
+</body>
+</html>

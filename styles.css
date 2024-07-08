@@ -1,0 +1,195 @@
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    line-height: 1.6;
+    color: #413339;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    max-width: 200px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-family: 'Roboto', Arial, sans-serif;
+    color: #2628DD;
+    margin-top: 0;
+}
+
+h2 {
+    font-family: 'Roboto', Arial, sans-serif;
+    color: #413339;
+}
+
+.category {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.category h2 {
+    margin-top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+ol {
+    padding-left: 20px;
+    list-style-position: outside;
+}
+
+ol li {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-left: 10px;
+}
+
+.list-item-content {
+    flex: 1;
+    padding-right: 10px;
+}
+
+.status-button {
+    font-size: 0.8em;
+    padding: 5px 10px;
+    border-radius: 15px;
+    color: white;
+    white-space: nowrap;
+    width: 180px; /* Set a fixed width */
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.status-implemented {
+    background-color: #27ae60;
+}
+
+.status-partial {
+    background-color: #2ecc71;
+}
+
+.status-progress {
+    background-color: #f39c12;
+}
+
+.status-not-started {
+    background-color: #e74c3c;
+}
+
+        ol li {
+            margin-bottom: 15px;
+        }
+        
+        ol li a {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 10px;
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid transparent;
+            border-radius: 5px;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        
+        ol li a:hover {
+            background-color: #f5f5f5;
+            border-color: #ddd;
+        }
+        
+        .status-button {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: box-shadow 0.3s;
+        }
+        
+        .status-button:hover {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+
+/* Styles for the smaller compliance scores */
+.compliance-score {
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 15px;
+    color: white;
+    display: inline-block;
+    min-width: 80px;
+}
+
+.compliance-score .score-percentage {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.compliance-score .score-fraction {
+    font-size: 0.8em;
+}
+
+/* Styles for the larger compliance score */
+.compliance-score-large {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    background-color: #f39c12; /* Default to amber, will be overridden by JavaScript */
+    margin: 20px 0;
+    font-size: 1.2em;
+    max-width: 800px;
+}
+
+.compliance-score-large h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #413339;
+    font-size: 1.5em;
+}
+
+.compliance-score-large .score-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.compliance-score-large .score-percentage {
+    font-size: 3em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.compliance-score-large .score-fraction {
+    font-size: 1.5em;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 600px) {
+    .compliance-score-large {
+        font-size: 1em;
+        padding: 15px;
+    }
+
+    .compliance-score-large h2 {
+        font-size: 1.3em;
+    }
+
+    .compliance-score-large .score-percentage {
+        font-size: 2.5em;
+    }
+
+    .compliance-score-large .score-fraction {
+        font-size: 1.2em;
+    }
+}
