@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+/* Global Styles */
 body {
     font-family: 'Roboto', Arial, sans-serif;
     line-height: 1.6;
@@ -7,6 +10,7 @@ body {
     padding: 20px;
 }
 
+/* Header Styles */
 header {
     text-align: center;
     margin-bottom: 20px;
@@ -18,17 +22,21 @@ header {
     margin-bottom: 10px;
 }
 
-h1 {
+/* Typography */
+h1, h2 {
     font-family: 'Roboto', Arial, sans-serif;
+}
+
+h1 {
     color: #2628DD;
     margin-top: 0;
 }
 
 h2 {
-    font-family: 'Roboto', Arial, sans-serif;
     color: #413339;
 }
 
+/* Category Styles */
 .category {
     margin-bottom: 20px;
     border: 1px solid #ddd;
@@ -43,6 +51,7 @@ h2 {
     align-items: center;
 }
 
+/* List Styles */
 ol {
     padding-left: 20px;
     list-style-position: outside;
@@ -50,10 +59,27 @@ ol {
 
 ol li {
     margin-bottom: 15px;
+}
+
+ol li a {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    padding-left: 10px;
+    padding: 10px;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+ol li a:hover {
+    background-color: #f5f5f5;
+    border-color: #ddd;
+}
+
+ol li a:hover .list-item-content {
+    font-weight: bold;
 }
 
 .list-item-content {
@@ -61,102 +87,60 @@ ol li {
     padding-right: 10px;
 }
 
+/* Status Button Styles */
 .status-button {
     font-size: 0.8em;
     padding: 5px 10px;
     border-radius: 15px;
     color: white;
     white-space: nowrap;
-    width: 180px; /* Set a fixed width */
+    width: 180px;
     text-align: center;
     flex-shrink: 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s;
 }
 
-.status-implemented {
-    background-color: #27ae60;
+.status-button:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-.status-partial {
-    background-color: #2ecc71;
-}
+.status-implemented { background-color: #27ae60; }
+.status-partial { background-color: #2ecc71; }
+.status-progress { background-color: #f39c12; }
+.status-not-started { background-color: #e74c3c; }
 
-.status-progress {
-    background-color: #f39c12;
-}
-
-.status-not-started {
-    background-color: #e74c3c;
-}
-
-        ol li {
-            margin-bottom: 15px;
-        }
-        
-        ol li a {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            padding: 10px;
-            text-decoration: none;
-            color: inherit;
-            border: 1px solid transparent;
-            border-radius: 5px;
-            transition: background-color 0.3s, border-color 0.3s;
-        }        
-
-        ol li a:hover {
-            background-color: #f5f5f5;
-            border-color: #ddd;
-        }
-        
-	ol li a:hover .list-item-content {
-            font-weight: bold;
-        }
-
-        .status-button {
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transition: box-shadow 0.3s;
-        }
-        
-        .status-button:hover {
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-
-
-/* Styles for the smaller compliance scores */
-.compliance-score {
+/* Compliance Score Styles */
+.compliance-score, .compliance-score-large {
     text-align: center;
-    padding: 5px 10px;
-    border-radius: 15px;
     color: white;
+    border-radius: 10px;
+}
+
+.compliance-score {
+    padding: 5px 10px;
     display: inline-block;
     min-width: 80px;
 }
 
-.compliance-score .score-percentage {
-    font-size: 1.2em;
-    font-weight: bold;
-}
-
-.compliance-score .score-fraction {
-    font-size: 0.8em;
-}
-
-/* Styles for the larger compliance score */
 .compliance-score-large {
-    text-align: center;
     padding: 20px;
-    border-radius: 10px;
-    color: white;
-    background-color: #f39c12; /* Default to amber, will be overridden by JavaScript */
     margin: 20px 0;
     font-size: 1.2em;
     max-width: 800px;
+    background-color: #f39c12; /* Default to amber, will be overridden by JavaScript */
 }
 
+.compliance-score .score-percentage,
+.compliance-score-large .score-percentage {
+    font-weight: bold;
+}
+
+.compliance-score .score-percentage { font-size: 1.2em; }
+.compliance-score .score-fraction { font-size: 0.8em; }
+
 .compliance-score-large h2 {
-    margin-top: 0;
-    margin-bottom: 15px;
+    margin: 0 0 15px;
     color: #413339;
     font-size: 1.5em;
 }
@@ -170,7 +154,6 @@ ol li {
 
 .compliance-score-large .score-percentage {
     font-size: 3em;
-    font-weight: bold;
     margin-bottom: 5px;
 }
 
@@ -178,7 +161,7 @@ ol li {
     font-size: 1.5em;
 }
 
-/* Responsive design for smaller screens */
+/* Responsive design */
 @media (max-width: 600px) {
     .compliance-score-large {
         font-size: 1em;
