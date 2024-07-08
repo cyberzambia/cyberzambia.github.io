@@ -80,7 +80,7 @@ ol li {
 ol li a {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     padding: 10px;
     text-decoration: none;
     color: inherit;
@@ -115,6 +115,7 @@ ol li a:hover .list-item-content {
     flex-shrink: 0;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     transition: box-shadow 0.3s;
+    align-self: center;
 }
 
 .status-button:hover {
