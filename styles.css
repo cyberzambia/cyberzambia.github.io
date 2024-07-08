@@ -56,6 +56,10 @@ ol li {
     padding-left: 10px;
 }
 
+        ol li a:hover .list-item-content {
+            font-weight: bold;
+        }
+
 .list-item-content {
     flex: 1;
     padding-right: 10px;
