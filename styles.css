@@ -1,3 +1,4 @@
+/* Existing styles */
 /* Roboto Font Styles */
 .roboto {
     font-family: "Roboto", sans-serif;
@@ -196,4 +197,194 @@ ol li a:hover .list-item-content {
     .compliance-score-large .score-fraction {
         font-size: 1.2em;
     }
+}
+
+/* New styles for maturity level selection */
+.maturity-level {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.maturity-option {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.maturity-option:hover {
+    background-color: #f5f5f5;
+}
+
+.maturity-option input[type="radio"] {
+    margin-right: 10px;
+    margin-top: 3px;
+}
+
+.maturity-description {
+    flex: 1;
+}
+
+/* Styles for the supporting comments section */
+.supporting-comments {
+    margin-top: 20px;
+}
+
+.supporting-comments textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: 'Roboto', Arial, sans-serif;
+    resize: vertical;
+}
+
+/* Styles for the evidence upload section */
+.upload-section {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.upload-button {
+    background-color: #2628DD;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.upload-button:hover {
+    background-color: #1e1fb1;
+}
+
+#file-list {
+    margin-top: 10px;
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#file-list li {
+    margin-bottom: 5px;
+}
+
+/* New styles for action buttons */
+.action-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.save-button, .save-exit-button, .cancel-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.save-button {
+    background-color: #3498db;
+    color: white;
+}
+
+.save-button:hover {
+    background-color: #2980b9;
+}
+
+.save-exit-button {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.save-exit-button:hover {
+    background-color: #27ae60;
+}
+
+.cancel-button {
+    background-color: grey;
+    color: white;
+}
+
+.cancel-button:hover {
+    background-color: charcoal;
+}
+
+/* Updated styles for maturity level selection */
+.maturity-level {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.maturity-option {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.maturity-option:hover {
+    background-color: #f5f5f5;
+}
+
+.maturity-option input[type="radio"] {
+    margin-right: 15px;
+    margin-top: 3px;
+    /* Hide default radio button */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #2628DD;
+    border-radius: 50%;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.maturity-option input[type="radio"]:checked {
+    background-color: #2628DD;
+    box-shadow: 0 0 0 3px white inset;
+}
+
+.maturity-option input[type="radio"]:checked + .maturity-description {
+    font-weight: bold;
+}
+
+.maturity-option:has(input[type="radio"]:checked) {
+    background-color: #e6e6ff;
+    border-color: #2628DD;
+    box-shadow: 0 0 10px rgba(38, 40, 221, 0.2);
+}
+
+.maturity-description {
+    flex: 1;
+}
+
+/* New guideline format */
+.guideline {
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 1.5em; /* Adjust this to match your h2 size if different */
+    font-weight: 500; /* Adjust this to match your h2 weight if different */
+    color: #413339; /* This should match your h2 color */
+    background-color: #f9f9f9; /* Light light gray shading */
+    border: 2px solid #413339; /* Border color matches the text color */
+    padding: 15px;
+    margin: 20px 0;
+    line-height: 1.4; /* Normal line spacing */
+    border-radius: 5px; /* Optional: adds rounded corners */
 }
